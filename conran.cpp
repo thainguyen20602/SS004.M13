@@ -2,6 +2,6 @@
 using namespace std;
 int main()
 {
-	initwinbackround();
+	game();
 	return 0;
 }

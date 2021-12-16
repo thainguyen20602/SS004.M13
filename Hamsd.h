@@ -4,7 +4,7 @@
 #include<SFML/Window.hpp>
 #include<SFML/Audio.hpp>
 #include<SFML/System.hpp>
-#include<Windows.h>;
+#include<Windows.h>
 #include<iostream>
 int MAU = 1;
 using namespace std;
@@ -55,7 +55,7 @@ void ramdoming(Text& newgame, Text& highscore, Text& quicgame, Text& about)
     }
     
 }
-void initwinbackround()
+int initwinbackround()
 {
     sf::RenderWindow window(sf::VideoMode(1024, 512), "My window");
     window.setFramerateLimit(60);
@@ -93,7 +93,7 @@ void initwinbackround()
     sf::Image img;
     if (!img.loadFromFile("img.jpg"))
     {
-        cout<<"Can Not IMG";
+        cout << "Can Not IMG";
     }
     sf::Texture textture;
     textture.loadFromImage(img);
@@ -103,21 +103,8 @@ void initwinbackround()
     while (window.isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
-        i++;
-        if (i==10)
-        {
-            i =9;
-            ramdoming(newgame, hightscore, quickgame, about);
-            Sleep(250);
-           
-        }
+        ramdoming(newgame, hightscore, quickgame, about);
+        Sleep(250);
         window.clear();
         window.draw(spirte);
         window.draw(text);
@@ -126,7 +113,117 @@ void initwinbackround()
         window.draw(quickgame);
         window.draw(about);
         window.display();
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+                return 3;
+            }
+            if (event.type == Event::MouseButtonPressed)
+            {
+                int x = event.mouseButton.x, y = event.mouseButton.y;
+                if (x > 420 && x < 595 && y>180 && y < 205)
+                {
+                    return 1;
+                }
+                if (x > 400 && x < 615 && y>220 && y < 245)
+                {
+                    if (event.type == Event::MouseButtonPressed)
+                    {
+                        return 2;
+                    }
+                }
+                if (x > 400 && x < 600 && y>260 && y < 285)
+                {
+                    if (event.type == Event::MouseButtonPressed)
+                    {
+                        return 3;
+                    }
+                }
+                if (x > 445 && x < 555 && y>300 && y < 325)
+                {
+                    if (event.type == Event::MouseButtonPressed)
+                    {
+                        return 4;
+                    }
+                }
+
+            }
+            
+        }
     }
+}
+void About()
+{
+    sf::RenderWindow window(sf::VideoMode(1024, 512), "My window");
+    window.setFramerateLimit(60);
+    window.setTitle("Snake");
+    sf::Image img;
+    if (!img.loadFromFile("img.jpg"))
+    {
+        cout << "Can Not IMG";
+    }
+    sf::Texture textture;
+    textture.loadFromImage(img);
+    sf::Sprite spirte;
+    spirte.setTexture(textture);
+    sf::Style::Resize;
+    sf::Style::Close;
+    sf::Text about,mon,dack, sv1, sv2, sv3,huongdan,gv;
+    sf::Font font;
+    if (!font.loadFromFile("Metropolian-Display.ttf"))
+    {
+        throw("NOT FILE");
+    }
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+            {
+                window.close();
+            }
+            if (event.type == Event::MouseButtonPressed)
+            {
+                window.close();
+            }
+        }
+        window.clear();
+        window.draw(spirte);
+        window.display();
+    }
+}
+void game()
+{
+    int chon = 0;
+    do
+    {
+        chon = initwinbackround();
+        switch (chon)
+        {
+        case 1:
+        {
+
+        }break;
+        case 2:
+        {
+
+        }break;
+        case 3:
+        {
+        }break;
+        case 4:
+        {
+            About();
+        }break;
+        }
+    } while (chon != 3);
 }
 #endif // !ham_du
 
