@@ -7,7 +7,7 @@
 #include<Windows.h>
 #include<iostream>
 int MAU = 1;
-int HIGTSCORE = 0;
+int HIGHSCORE = 0;
 using namespace std;
 using namespace sf;
 void ramdoming(Text& newgame, Text& highscore, Text& quicgame, Text& about)
@@ -283,6 +283,118 @@ int highscore(RenderWindow& window)
         window.display();
     }
 }
+int setleve(RenderWindow& window)
+{
+    sf::Image img;
+    if (!img.loadFromFile("img.jpg"))
+    {
+        cout << "Can Not IMG";
+    }
+    sf::Texture textture;
+    textture.loadFromImage(img);
+    sf::Sprite spirte;
+    spirte.setTexture(textture);
+    sf::Font font;
+    if (!font.loadFromFile("Metropolian-Display.ttf"))
+    {
+        throw("NOT FILE");
+    }
+    Text leve, youchoise;
+    leve.setFont(font);
+    youchoise.setFont(font);
+    leve.setString("LEVE 1 - 5");
+    youchoise.setString("YOU CHOICE:  1   2   3   4   5");
+    leve.setCharacterSize(60);
+    youchoise.setCharacterSize(40);
+    leve.setFillColor(Color::Red);
+    youchoise.setFillColor(Color::Yellow);
+    leve.move(342.f, 100.f);
+    youchoise.move(20.f, 180.f);
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+            {
+                return 0;
+            }
+            if (event.type == Event::MouseButtonPressed)
+            {
+                int x = event.mouseButton.x, y = event.mouseButton.y;
+                if (y >= 188 && y <= 220)
+                {
+                    if (x >= 339 && x <= 355)return 1;
+                    if (x >= 403 && x <= 425)return 2;
+                    if (x >= 472 && x <= 490)return 3;
+                    if (x >= 542 && x <= 563)return 4;
+                    if (x >= 617 && x <= 632)return 4;
+                }
+            }
+        }
+        window.clear();
+        window.draw(spirte);
+        window.draw(leve);
+        window.draw(youchoise);
+        window.display();
+    }
+}
+int newgame(RenderWindow&window)
+{
+    int leve = setleve(window);
+    if (leve == 0)return 3;
+    sf::Image img;
+    if (!img.loadFromFile("img.jpg"))
+    {
+        cout << "Can Not IMG";
+    }
+    sf::Texture textture;
+    textture.loadFromImage(img);
+    sf::Sprite spirte;
+    spirte.setTexture(textture);
+    sf::RectangleShape line1(Vector2f(1024.f, 10.f)), line2(Vector2f(512.f, 10.f)), line3(Vector2f(1024.f, 10.f)), line4(Vector2f(512.f, 10.f));
+
+    line1.rotate(0.f);
+    line2.rotate(90.f);
+    line3.rotate(0.f);
+    line4.rotate(90.f);
+    line1.setFillColor(Color::Color(200, 50, 50));
+    line2.setFillColor(Color::Color(200, 50, 50));
+    line3.setFillColor(Color::Color(200, 50, 50));
+    line4.setFillColor(Color::Color(200, 50, 50));
+    line2.move(10,10);
+    line3.move(0, 502);
+    line4.move(1024,10);
+    while (window.isOpen())
+    {
+        // check all the window's events that were triggered since the last iteration of the loop
+        sf::Event event;
+
+        while (window.pollEvent(event))
+        {
+            // "close requested" event: we close the window
+            if (event.type == sf::Event::Closed)
+            {
+                return 3;
+            }
+            if (event.type == Event::MouseButtonPressed)
+            {
+                int x = event.mouseButton.x, y = event.mouseButton.y;
+                cout << x << " " << y << endl;
+            }
+        }
+        window.clear();
+        window.draw(spirte);
+        window.draw(line1);
+        window.draw(line2);
+        window.draw(line3);
+        window.draw(line4);
+        window.display();
+    }
+    return 0;
+}
 void game()
 {
     sf::RenderWindow window(sf::VideoMode(1024, 512), "My window");
@@ -298,7 +410,7 @@ void game()
         {
         case 1:
         {
-
+            a = newgame(window);
         }break;
         case 2:
         {
