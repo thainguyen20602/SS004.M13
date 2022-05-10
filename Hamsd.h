@@ -6,65 +6,10 @@
 #include<SFML/System.hpp>
 #include<Windows.h>
 #include<iostream>
-#define TUONG_TREN 10;
-#define TUONG_DUOI 496
-#define TUONG_TRAI 11
-#define TUONG_PHAI 1012
 int MAU = 1;
-int HIGHSCORE = 0;
+int HIGTSCORE = 0;
 using namespace std;
 using namespace sf;
-struct node
-{
-    CircleShape x;
-    node* next;
-};
-struct linklist
-{
-    node* head;
-    node* tail;
-};
-void khoitaotree(linklist&l)
-{
-    l.head = l.tail = NULL;
-}
-node* khoitaonode(int x, int y)
-{
-    node *p = new node;
-    p->x.setRadius(10.f);
-    p->x.move(x, y);
-    p->x.setFillColor(Color::Black);
-    p->next = NULL;
-    return p;
-}
-void themdau(linklist&l,node*p)
-{
-    if (l.head == NULL)
-    {
-        l.head = l.tail = p;
-    }
-    else
-    {
-        p->next = l.head;
-        l.head = p;
-    }
-}
-void themcuoi(linklist& l, node* p)
-{
-    if (l.head == NULL)
-    {
-        l.head = l.tail = p;
-    }
-    else
-    {
-        l.tail->next = p;
-        l.tail = p;
-    }
-}
-Vector2f getnode(node* p)
-{
-    return p->x.getPosition();
-}
 void ramdoming(Text& newgame, Text& highscore, Text& quicgame, Text& about)
 {
     if (MAU >= 5)
@@ -317,27 +262,6 @@ int highscore(RenderWindow& window)
     textture.loadFromImage(img);
     sf::Sprite spirte;
     spirte.setTexture(textture);
-    sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
-    {
-        throw("NOT FILE");
-    }
-    Text diem,diemcuaban, diemcao;
-    diem.setFont(font);
-    diemcao.setFont(font);
-    diemcuaban.setFont(font);
-    diemcao.setString("HIGH SCORE");
-    diemcuaban.setString("DIEM CAO NHAT CUA BAN LA: ");
-    diem.setString(to_string(HIGHSCORE));
-    diemcao.setFillColor(Color::Red);
-    diem.setFillColor(Color::Color(0,0,51));
-    diemcuaban.setFillColor(Color::Color(0, 0, 51));
-    diem.move(596, 171);
-    diemcao.move(310, 66);
-    diemcuaban.move(15, 171);
-    diem.setCharacterSize(30);
-    diemcuaban.setCharacterSize(30);
-    diemcao.setCharacterSize(50);
     while (window.isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
@@ -351,289 +275,13 @@ int highscore(RenderWindow& window)
             }
             if (event.type == Event::MouseButtonPressed)
             {
-                int  x = event.mouseButton.x, y = event.mouseButton.y;
-                cout << x << " " << y;
                 return 0;
             }
         }
         window.clear();
         window.draw(spirte);
-        window.draw(diemcao);
-        window.draw(diemcuaban);
-        window.draw(diem);
         window.display();
     }
-}
-int setleve(RenderWindow& window)
-{
-    sf::Image img;
-    if (!img.loadFromFile("img.jpg"))
-    {
-        cout << "Can Not IMG";
-    }
-    sf::Texture textture;
-    textture.loadFromImage(img);
-    sf::Sprite spirte;
-    spirte.setTexture(textture);
-    sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
-    {
-        throw("NOT FILE");
-    }
-    Text leve, youchoise;
-    leve.setFont(font);
-    youchoise.setFont(font);
-    leve.setString("LEVE 1 - 5");
-    youchoise.setString("YOU CHOICE:  1   2   3   4   5");
-    leve.setCharacterSize(60);
-    youchoise.setCharacterSize(40);
-    leve.setFillColor(Color::Red);
-    youchoise.setFillColor(Color::Yellow);
-    leve.move(342.f, 100.f);
-    youchoise.move(20.f, 180.f);
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-            {
-                return 0;
-            }
-            if (event.type == Event::MouseButtonPressed)
-            {
-                int x = event.mouseButton.x, y = event.mouseButton.y;
-                if (y >= 188 && y <= 220)
-                {
-                    if (x >= 339 && x <= 355)return 1;
-                    if (x >= 403 && x <= 425)return 2;
-                    if (x >= 472 && x <= 490)return 3;
-                    if (x >= 542 && x <= 563)return 4;
-                    if (x >= 617 && x <= 632)return 5;
-                }
-            }
-        }
-        window.clear();
-        window.draw(spirte);
-        window.draw(leve);
-        window.draw(youchoise);
-        window.display();
-    }
-}
-Vector2f getran(linklist l)
-{
-    return l.tail->x.getPosition();
-}
-class conran
-{
-private:
-    linklist ran;
-    int n;
-    CircleShape moi;
-    int score;
-public:
-    int getscore()
-    {
-        int a = score;
-        return a;
-    }
-    conran()
-    {
-        n = 3;
-        score = 30;
-        khoitaotree(ran);
-        moi.setRadius(10.f);
-        moi.setFillColor(Color(255, 0, 255));
-        this->randommoi();
-        for (int i = 0; i < n; i++)
-        {
-            if (i == 0)
-            {
-                themdau(ran, khoitaonode(512, 256));
-            }
-            else
-            {
-                Vector2f k=getran(ran);
-                themdau(ran, khoitaonode(k.x - 20, k.y));
-            }
-        }
-    }
-    void randommoi()
-    {
-        int x, y, nguyen;
-        x = 12 + rand() % (992 - 12 + 1);
-        y= 16+ rand() % (496 - 16 + 1);
-        nguyen = x / 20;
-        x = nguyen * 20 + 12;
-        nguyen = y / 20;
-        y = nguyen* 20 + 16;
-        moi.setPosition(x, y);
-    }
-    void themran(int huong)
-    {
-        n = n + 1;
-        score = score + 10;
-        HIGHSCORE = score > HIGHSCORE ? score : HIGHSCORE;
-        Vector2f k = getran(ran);
-        if (huong == 3 || huong == 72)k.x = k.x + 20.f;
-        else
-        {
-            if (huong == 71 || huong == int(0))k.x = k.x - 20.f;
-            else
-            {
-                if (huong == 22 || huong == 73)k.y = k.y - 20.f;
-                else
-                {
-                    if (huong == 18 || huong == 74)k.y = k.y + 20.f;
-                }
-            }
-        }
-        themcuoi(ran, khoitaonode(k.x, k.y));
-    }
-    int dichuyen(int huong)
-    {
-        
-        for (node* p = ran.head; p->next != NULL; p = p->next)
-        {
-            Vector2f k = p->next->x.getPosition();
-            p->x.setPosition(k.x,k.y);
-        }
-        Vector2f k = getran(ran);
-        if (k.x == moi.getPosition().x && k.y == moi.getPosition().y)
-        {
-            this->randommoi();
-            themran(huong);
-        }
-        if (huong == 3 || huong == 72)k.x = k.x + 20.f;
-        else
-        {
-            if (huong == 71||huong==int(0))k.x = k.x - 20.f;
-            else
-            {
-                if (huong == 22 || huong == 73)k.y = k.y - 20.f;
-                else
-                {
-                    if (huong == 18 || huong == 74)k.y = k.y + 20.f;
-                }
-            }
-        }
-        ran.tail->x.setPosition(k);
-        if (k.x <= 10)return 0;
-        if (k.x >= TUONG_PHAI)return 0;
-        if (k.y <= 10)return 0;
-        if (k.y >= TUONG_DUOI)return 0;
-        return -1;
-    }
-    void inran(RenderWindow& window)
-    {
-        for (node* p = ran.head; p != NULL; p = p->next)
-        {
-            window.draw(p->x);
-        }
-        window.draw(moi);
-    }
-};
-int newgame(RenderWindow&window)
-{
-    int leve = setleve(window);
-    if (leve == 0)return 3;
-    sf::Image img;
-    if (!img.loadFromFile("img.jpg"))
-    {
-        cout << "Can Not IMG";
-    }
-    sf::Texture textture;
-    textture.loadFromImage(img);
-    sf::Sprite spirte;
-    spirte.setTexture(textture);
-    sf::RectangleShape line1(Vector2f(1024.f, 10.f)), line2(Vector2f(512.f, 10.f)), line3(Vector2f(1024.f, 10.f)), line4(Vector2f(512.f, 10.f));
-    line1.rotate(0.f);
-    line2.rotate(90.f);
-    line3.rotate(0.f);
-    line4.rotate(90.f);
-    line1.setFillColor(Color::Color(200, 50, 50));
-    line2.setFillColor(Color::Color(200, 50, 50));
-    line3.setFillColor(Color::Color(200, 50, 50));
-    line4.setFillColor(Color::Color(200, 50, 50));
-    line2.move(10,10);
-    line3.move(0, 502);
-    line4.move(1024,10);
-    conran ran;
-    int huong = 3, huongcu = 3;
-    int flag = 1;
-    sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
-    {
-        throw("NOT FILE");
-    }
-    Text Diem, score;
-    Diem.setFont(font);
-    score.setFont(font);
-    Diem.setString("Diem: ");
-    Diem.setCharacterSize(20);
-    Diem.move(800, 15);
-    Diem.setFillColor(Color::White);
-    score.setCharacterSize(20);
-    score.move(885, 15);
-    score.setFillColor(Color::White);
-    while (window.isOpen())
-    {
-        // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
-
-        while (window.pollEvent(event))
-        {
-            // "close requested" event: we close the window
-            if (event.type == sf::Event::Closed)
-            {
-                return 3;
-            }
-            if (event.type == Event::MouseButtonPressed)
-            {
-                int x = event.mouseButton.x, y = event.mouseButton.y;
-                return 0;
-            }
-            if (event.type == Event::KeyPressed)
-            {
-                huongcu = huong;
-                huong= event.key.code;
-            }
-
-        }
-        score.setString(to_string(ran.getscore()));
-        if ((huongcu == 0 || huongcu == 71) && (huong == 3 || huong == 72))huong = huongcu;
-        if ((huongcu == 3 || huongcu == 72) && (huong == 0 || huong == 71))huong = huongcu;
-        if ((huongcu == 22 || huongcu == 73) && (huong == 18 || huong == 74))huong = huongcu;
-        if ((huongcu == 18 || huongcu == 74) && (huong == 22 || huong == 73))huong = huongcu;
-        window.clear();
-        window.draw(spirte);
-        ran.inran(window);
-        /*window.draw(shape);*/
-        window.draw(line1);
-        window.draw(Diem);
-        window.draw(score);
-        window.draw(line2);
-        window.draw(line3);
-        window.draw(line4);
-        window.display();
-        switch (leve)
-        {
-        case 1:Sleep(450);
-        case 2:Sleep(350);
-        case 3:Sleep(250);
-        case 4:Sleep(150);
-        case 5:Sleep(50);
-        }
-        flag=ran.dichuyen(huong);
-        if (flag == 0)
-        {
-            /*Sleep(5000);*/
-            return 0;
-        }
-    }
-    return 0;
 }
 void game()
 {
@@ -650,7 +298,7 @@ void game()
         {
         case 1:
         {
-            a = newgame(window);
+
         }break;
         case 2:
         {
