@@ -119,7 +119,7 @@ int initwinbackround(RenderWindow&window)
 {
     sf::Text text, newgame, quickgame, hightscore, about;
     sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
+    if (!font.loadFromFile("src/Metropolian-Display.ttf"))
     {
         throw("NOT FILE");
     }
@@ -146,7 +146,7 @@ int initwinbackround(RenderWindow&window)
     quickgame.move(400.f, 260.f);
     about.move(445.f, 300.f);
     sf::Image img;
-    if (!img.loadFromFile("img.jpg"))
+    if (!img.loadFromFile("src/img.jpg"))
     {
         cout << "Can Not IMG";
     }
@@ -231,7 +231,7 @@ void mauabout(Text&mon, Text&dack,Text&svthuchien, Text&sv1, Text&sv2, Text&sv3,
 int About(RenderWindow&window)
 {
     sf::Image img;
-    if (!img.loadFromFile("img.jpg"))
+    if (!img.loadFromFile("src/img.jpg"))
     {
         cout << "Can Not IMG";
     }
@@ -243,7 +243,7 @@ int About(RenderWindow&window)
     sf::Style::Close;
     sf::Text about,mon,dack,svthuchien, sv1, sv2, sv3,huongdan,gv;
     sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
+    if (!font.loadFromFile("src/Metropolian-Display.ttf"))
     {
         throw("NOT FILE");
     }
@@ -322,7 +322,7 @@ int About(RenderWindow&window)
 int highscore(RenderWindow& window)
 {
     sf::Image img;
-    if (!img.loadFromFile("img.jpg"))
+    if (!img.loadFromFile("src/img.jpg"))
     {
         cout << "Can Not IMG";
     }
@@ -331,7 +331,7 @@ int highscore(RenderWindow& window)
     sf::Sprite spirte;
     spirte.setTexture(textture);
     sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
+    if (!font.loadFromFile("src/Metropolian-Display.ttf"))
     {
         throw("NOT FILE");
     }
@@ -379,7 +379,7 @@ int highscore(RenderWindow& window)
 int setleve(RenderWindow& window)
 {
     sf::Image img;
-    if (!img.loadFromFile("img.jpg"))
+    if (!img.loadFromFile("src/img.jpg"))
     {
         cout << "Can Not IMG";
     }
@@ -388,7 +388,7 @@ int setleve(RenderWindow& window)
     sf::Sprite spirte;
     spirte.setTexture(textture);
     sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
+    if (!font.loadFromFile("src/Metropolian-Display.ttf"))
     {
         throw("NOT FILE");
     }
@@ -567,7 +567,7 @@ int newgame(RenderWindow&window)
     int leve = setleve(window);
     if (leve == 0)return 3;
     sf::Image img;
-    if (!img.loadFromFile("img.jpg"))
+    if (!img.loadFromFile("src/img.jpg"))
     {
         cout << "Can Not IMG";
     }
@@ -591,7 +591,7 @@ int newgame(RenderWindow&window)
     int huong = 3, huongcu = 3;
     int flag = 1;
     sf::Font font;
-    if (!font.loadFromFile("Metropolian-Display.ttf"))
+    if (!font.loadFromFile("src/Metropolian-Display.ttf"))
     {
         throw("NOT FILE");
     }

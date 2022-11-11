@@ -1,30 +1,30 @@
 ﻿  conran.cpp
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(39,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(39,15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(476,53): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(39,18): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(39,15): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(476,53): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(476,46): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(476,46): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(490,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(490,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(514,41): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(490,28): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(490,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(514,41): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(514,36): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(514,36): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(213): warning C4715: 'initwinbackround': not all control paths return a value
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(377): warning C4715: 'highscore': not all control paths return a value
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(436): warning C4715: 'setleve': not all control paths return a value
-C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Hamsd.h(320): warning C4715: 'About': not all control paths return a value
-  Code game con ran.vcxproj -> C:\Users\DELL\Documents\Tài Liệu\Học kì 3\Kỹ năng nghề nghiệp\Code game con ran\Debug\Code game con ran.exe
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(213): warning C4715: 'initwinbackround': not all control paths return a value
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(320): warning C4715: 'About': not all control paths return a value
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(377): warning C4715: 'highscore': not all control paths return a value
+C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Hamsd.h(436): warning C4715: 'setleve': not all control paths return a value
+  Code game con ran.vcxproj -> C:\Users\DELL\Downloads\SS004.M13-master\SS004.M13-master\Debug\Code game con ran.exe
