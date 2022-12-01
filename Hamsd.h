@@ -705,4 +705,4 @@ void game()
     }
 }
 #endif // !ham_du
-
+    
